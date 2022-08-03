@@ -1,0 +1,8 @@
+FROM ubuntu:impish
+
+EXPOSE 8080
+WORKDIR /opt/gowebapp
+
+COPY ./gowebapp/gowebapp/config/ /opt/gowebapp/config
+copy ./gowebapp/gowebapp/code /opt/gowebapp
+cmd /opt/gowebapp/gowebapp

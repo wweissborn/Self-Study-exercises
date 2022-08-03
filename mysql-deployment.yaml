@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  labels:
+    tier: backend
+
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      tier: backend
+  template:
+    metadata:
+      labels:
+        tier: backend
+    spec:
+      containers:
+      - name: mysql-deployment
+        env: 
+        - name: MYSQL_ROOT_PASSWORD
+          value: mypassword
+        image: wweissborn/homework:backend-1.0
+        ports:
+        - containerPort: 3306
+
